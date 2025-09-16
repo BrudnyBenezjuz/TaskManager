@@ -1,67 +1,96 @@
 MENAGER TASKÓW
 
 1. Opis projektu
+ 
  1.1 Członkowie
 - Radosław Plata
 - Karol Pajdzik
-  1.2 Cel
+ 
+ 1.2 Cel
 Utworzenie programu pomagającemu uzytkownikowi w utrzymaniu postanowien oraz tworzeniu zdrowych nawykow. Pozawala takze śledzić proces i postępy w czasie rzeczywistym, gratyfikując i nadając poczucie sprawczości.
-1.3 Potencjalny odbiorca projektu
+ 
+ 1.3 Potencjalny odbiorca projektu
 Osoby mające problem z systematycznością, konsekwencją lub chcące poprawić jakiś aspekt zycia w zorganizowany sposób
-1.4 Metodyka
+ 
+ 1.4 Metodyka
 Projekt będzie realizowany zgodnie z podejściem Agile Scrum, które umożliwia elastyczne reagowanie na zmieniające się potrzeby użytkowników i szybkie iteracje produktu. Główne założenia metodyki:
 
 Iteracyjność i inkrementalność
 -Praca w krótkich sprintach (np. tygodniowych lub dwutygodniowych)
 -Po każdym sprincie prezentacja działającego fragmentu aplikacji
 -Możliwość szybkiego wdrażania poprawek i nowych funkcji
+
 Role zespołu
 -Scrum Master – dba o przestrzeganie zasad Scrum, usuwa przeszkody i wspiera zespół
 -Zespół deweloperski – realizuje zadania techniczne, projektowe i testowe
+
 Narzędzia wspierające
 -Jira – do zarządzania zadaniami i backlogiem
 -Figma – do projektowania interfejsu użytkownika
 -GitHub – do kontroli wersji i współpracy programistycznej
 -Discord – do komunikacji zespołowej
+
 Testowanie i walidacja
 -Testy jednostkowe i integracyjne
 -Testy użyteczności z udziałem użytkowników
+
 Udział użytkownika
+
 Testy prototypów
+
 Uwzględnianie sugestii w kolejnych iteracjach
 
-2.  Wymagania użytkownika
-Jako użytkownik chcę, intuicyjny interfejs użytkownika (UI), dostępny na urządzeniach mobilnych i desktopowych.
-Jako użytkownik chcę, system przypomnień i powiadomień.
-Jako użytkownik chcę, duzo wizualnych featurow; wykresy, statystyki, odznaki.
-Jako użytkownik chcę, możliwość dzielenia się postępami z innymi (np. społeczność, grupy wsparcia).
-Jako użytkownik chcę, szeroką personalizacje aplikacji do własnych preferencji.
-3.Harmonogram
+2. Wymagania użytkownika
+ Jako użytkownik chcę, intuicyjny interfejs użytkownika (UI), dostępny na urządzeniach mobilnych i desktopowych.
+ Jako użytkownik chcę, system przypomnień i powiadomień.
+ Jako użytkownik chcę, duzo wizualnych featurow; wykresy, statystyki, odznaki.
+ Jako użytkownik chcę, możliwość dzielenia się postępami z innymi (np. społeczność, grupy wsparcia).
+ Jako użytkownik chcę, szeroką personalizacje aplikacji do własnych preferencji.
+
+3. Harmonogram
 
 Etap				Termin realizacji	Opis działań
-Analiza wstępna		01.10–07.10		Założenia projektu, cel
-Projektowanie UI/UX		08.10–15.10		Makiety, testy użyteczności
-Programowanie MVP		16.10–30.10		Podstawowe funkcje i interfejs
-Testy i poprawki		01.11–10.11		Testy beta, zbieranie opinii
-Wdrożenie wersji 1.0		15.11			Publikacja aplikacji
+         Analiza wstępna		                09.09		          Założenia projektu, cel                                                    Zadania: Utorzyć założenia aplikacji i plan działania - Radosław/Karol
+Sprint1: Programowanie MVP  		            16.09–23.09		    Podstawowe funkcje i interfejs                                             Zadania: Zaprojektować okienko logowania i menu - Karol, Napisanie kodu dla systemu logowania i taskow - Radosław
+Sprint2: Poszerzenie funkcjonalnośc	      30.09–7.10	     	Sprawdzanie ppostępów użytkownika w czasie rzeczywistym, personalizacja.   Zadania:
+Sprint3: Systemy motywacyjme	             14.10–21.10		    Levele, odznaki, punktacja i porownywanie sie z innymi.                    Zadania:
+Sprint4: Potwierdzenie dzialani           21.10–28.10	     Ostateczne testy i publikacja aplikacji                                    Zadania:
 
 
 4. Backlog produktu / Zadania w projekcie:
-Podzielony na kategorie funkcjonalne:
-Funkcjonalność podstawowa:
--Rejestracja i logowanie użytkownika
--Tworzenie celów i nawyków
--Edycja i usuwanie celów
--Przypomnienia push
-Śledzenie postępów:
--Codzienny dziennik aktywności
--Statystyki tygodniowe/miesięczne
--Wykresy motywacyjne
-System gratyfikacji:
--Punkty za wykonane zadania
--Odznaki za regularność
--Poziomy użytkownika
-Społeczność:
--Profile użytkowników
--Możliwość obserwowania innych
--Tablica motywacyjna
+
+4.1 Funkcjonalność podstawowa:
+
+Utworzenie systemu rejestracji i logowania użytkownika, 
+tworzenie taskow w aplikacji, edycja i usuwanie taskow, przypomnienia push.
+
+10
+
+DofD: Użykownik może się zalogować oraz zarządzać systemem taskow.
+
+4.2 Śledzenie postępów i personalizacja:
+Zaimplementowanie dziennika aktywności, wgląd w statystyki tygodniowe/miesięczne, 
+graficzne przedstawienie wykresow dajacych poczucie realizacji i sprawczosci,
+możliwości dostosowania wyglądu interfejsu do preferencji
+
+8
+
+DofD: Zbieranie informacji o postępie użykownika i możliwość sprawdzenie ich w dowolnym momencie.
+
+4.3 Systemy motywacyjne:
+Poszerzenie systemu nagrody o punkty za wykonane zadania, 
+odznaki za regularność, poziomy użytkownika wrastające wraz z zaliczanyi taskami.
+Profile użytkowników, możliwość obserwowania innych, tablica wyników.
+
+6
+
+DofD: Graficzne przedstawienie osięgnięć użytkownika, dawanie poczucia "levelowania postaci w grze" irywalizacji.
+
+4.4 Testy:
+Testowanie gotowyh fragmentów projektu w celu znalezienia potencjalnych bugów.
+Zbieranie ocen i propozycji od beta testowych użytkowników.
+Naprawa wadliwych części.
+
+9
+
+DofD: Aplikacja spełnie założenie z poprzednich "Dofd";
