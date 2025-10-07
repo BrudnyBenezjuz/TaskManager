@@ -50,10 +50,10 @@ Uwzględnianie sugestii w kolejnych iteracjach
 3. Harmonogram
 
 Etap				Termin realizacji	Opis działań
-         Analiza wstępna		             09.09		          Założenia projektu, cel                                                    Zadania: Utorzyć założenia aplikacji i plan działania - Radosław/Karol
-Sprint1: Programowanie MVP  		         16.09–23.09		    Podstawowe funkcje i interfejs                                             Zadania: Zaprojektować okienko logowania i menu - Karol, Napisanie kodu dla systemu logowania i taskow - Radosław
+         Analiza wstępna		         09.09		          Założenia projektu, cel                                                    Zadania: Utorzyć założenia aplikacji i plan działania - Radosław/Karol
+Sprint1: Programowanie MVP  		     16.09–23.09		    Podstawowe funkcje i interfejs                                             Zadania: Zaprojektować okienko logowania i menu - Karol, Napisanie kodu dla systemu logowania i taskow - Radosław
 Sprint2: Poszerzenie funkcjonalnośc	      30.09–7.10	     	Sprawdzanie postępów użytkownika w czasie rzeczywistym, personalizacja.    Zadania: Projektowanie elementow personalizacji - Radoslaw, Wprowadzenie - Karol
-Sprint3: Systemy motywacyjme	           14.10–21.10		    Levele, odznaki, punktacja i porownywanie sie z innymi.                    Zadania: Graficzne zaopatrzenie - Karol, stworzenie programu odpowiedzialnego system motywacji - Radek
+Sprint3: Systemy motywacyjme	         14.10–21.10		    Levele, odznaki, punktacja i porownywanie sie z innymi.                    Zadania: Graficzne zaopatrzenie - Karol, stworzenie programu odpowiedzialnego system motywacji - Radek
 Sprint4: Potwierdzenie dzialani           21.10–28.10	     Ostateczne testy i publikacja aplikacji                                    Zadania: Testowanie aplikacji, sprawdzanie funkcjonalnosci poszczegolnych elementow - Radek, Karol
 
 
@@ -94,5 +94,6 @@ Naprawa wadliwych części.
 9
 
 DofD: Aplikacja spełnie założenie z poprzednich "Dofd";
+
 
 
