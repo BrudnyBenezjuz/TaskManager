@@ -95,6 +95,114 @@ Naprawa wadliwych części.
 
 DofD: Aplikacja spełnie założenie z poprzednich "Dofd";
 
+7.1
+Rodzaj testu: Test funkcjonalny
+Wykonawca: Radosław Plata
+Opis testu: Test AddTask_ShouldIncreaseCount sprawdza, czy po dodaniu nowego zadania liczba zadań w kolekcji Tasks rośnie, co gwarantuje poprawne działanie funkcji dodawania.
+Rezultat: Pozytywny, aplikacja działa poprawnie
+Poprawki do wprowadzenia: -
+Użyte programy/technologie: własny test jednostkowy
+Fragment kodu:
+
+[Fact]
+        public void AddTask_ShouldIncreaseCount()
+        {
+            // Arrange
+            var page = new MenagerTask(null);
+            int initialCount = page.Tasks.Count;
+
+            // Act
+            page.Tasks.Add(new TaskItem
+            {
+                Title = "Test zadania",
+                Date = DateTime.Today,
+                Description = "Opis testowy",
+                ColorName = "Orange"
+            });
+
+Rodzaj testu: Test funkcjonalny, jednostkowy
+Wykonawca: Radosław Plata
+Opis testu: Test DeleteTask_ShouldRemoveItem weryfikuje, że po usunięciu zadania z kolekcji Tasks jego liczba maleje, co zapewnia prawidłowe działanie mechanizmu usuwania zadań.
+Rezultat: Pozytywny, aplikacja działa poprawnie
+Poprawki do wprowadzenia: -
+Użyte programy/technologie: własny test jednostkowy
+Fragment kodu:
+
+[Fact]
+        public void DeleteTask_ShouldRemoveItem()
+        {
+            // Arrange
+            var page = new MenagerTask(null);
+            var task = new TaskItem
+            {
+                Title = "Do usunięcia",
+                Date = DateTime.Today,
+                ColorName = "Red"
+            };
+
+            page.Tasks.Add(task);
+            int beforeCount = page.Tasks.Count;
+
+Rodzaj testu: Test funkcjonalny, jednostkowy
+Wykonawca: Karol Pajdzik
+Opis testu: Test Task_ShouldSetDefaultColor_WhenInvalid sprawdza, czy przy nieprawidłowej nazwie koloru zadanie automatycznie przyjmuje domyślny kolor LightGray, zapobiegając błędom wizualnym.
+Rezultat: Pozytywny, aplikacja działa poprawnie
+Poprawki do wprowadzenia: -
+Użyte programy/technologie: własny test jednostkowy
+Fragment kodu:
+
+
+[Fact]
+        public void Task_ShouldSetDefaultColor_WhenInvalid()
+        {
+            // Arrange
+            var task = new TaskItem
+            {
+                Title = "Zły kolor",
+                Date = DateTime.Today,
+                ColorName = "NieistniejącyKolor"
+            };
+
+            // Act
+            task.UpdateColor();
+
+            // Assert
+            Assert.Equal(System.Windows.Media.Brushes.LightGray.Color, task.Color.Color);
+        }
+
+Rodzaj testu: Test funkcjonalny, ednoskwy
+Wykonawca: Karol Pajdzik
+Opis testu: Test SaveAndLoad_ShouldPersistTasks weryfikuje, że zapis i odczyt z pliku JSON działa poprawnie, czyli zadania są trwale przechowywane między sesjami aplikacji.
+Rezultat: Pozytywny, aplikacja działa poprawnie
+Poprawki do wprowadzenia: -
+Użyte programy/technologie: własny test jednostkowy
+Fragment kodu:
+
+[Fact]
+        public void SaveAndLoad_ShouldPersistTasks()
+        {
+            // Arrange
+            var page = new MenagerTask(null);
+            page.Tasks.Clear();
+
+            var task = new TaskItem
+            {
+                Title = "Trwałość danych",
+                Date = DateTime.Now,
+                Description = "Test zapisu i odczytu",
+                ColorName = "Yellow"
+            };
+
+            page.Tasks.Add(task);
+            page.SaveTasks();
+
+            // Act
+            var page2 = new MenagerTask(null);
+            page2.LoadTasks();
+
+
+
+
 
 
 
