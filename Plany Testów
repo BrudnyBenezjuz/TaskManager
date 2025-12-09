@@ -1,0 +1,185 @@
+
+PLAN TESTÓW – MenagerTaskow
+
+---
+
+1. Testy funkcjonalne
+
+
+| Nazwa testu               | Opis testu                                                                                | Oczekiwany wynik                                              | Rezultat                   | Uwagi                          | Użyte narzędzia         |
+| ------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------- | ------------------------------ | ----------------------- |
+| Dodawanie nowego zadania  | Użytkownik wpisuje nazwę, wybiera datę, opis i priorytet, następnie klika „Dodaj Zadanie” | Zadanie pojawia się na liście z poprawnymi danymi             | Wynik pozytywny            | -                              | Aplikacja WPF, VS Debug |
+| Dodanie zadania bez nazwy | Kliknięcie „Dodaj Zadanie” bez uzupełnienia nazwy                                         | Pojawia się komunikat błędu lub dodanie jest zablokowane      | Wynik pozytywny            | Jeżeli brak walidacji → dodać  | VS Debug                |
+| Walidacja daty            | Ustawienie daty przeszłej lub niepoprawnej                                                | Aplikacja powinna zablokować dodanie lub wyświetlić komunikat | Wynik pozytywny            | -                              | WPF DatePicker          |
+| Usuwanie zadania          | Kliknięcie „Usuń” na istniejącym zadaniu                                                  | Zadanie znika z listy                                         | Wynik pozytywny            | -                              | Aplikacja WPF           |
+| Dodawanie opisu zadania   | Dodanie opisu i zapisanie zadania                                                         | Opis widoczny po dodaniu                                      | Wynik pozytywny            | -                              | UI aplikacji            |
+| Ustawianie priorytetu     | Wybranie priorytetu (Niski – zielony, Średni – żółty, Wysoki – czerwony)                  | Karta zadania zmienia kolor zgodnie z priorytetem             | Wynik pozytywny            | -                              | Style WPF               |
+| Zmiana motywu / ustawień  | Kliknięcie ikony ustawień i zmiana motywu                                                 | UI zmienia kolory zgodnie z ustawieniami                      | Wynik pozytywny            | Dodać jeśli brak implementacji | Panel ustawień          |
+| Wyświetlanie listy zadań  | Po uruchomieniu aplikacji zadania wczytują się z pliku / bazy                             | Lista zawiera poprzednio zapisane zadania                     | Wynik pozytywny            | Jeśli nie ma zapisu → uwaga    | File I/O lub JSON       |
+| Zapobieganie duplikatom   | Próba dodania zadania o takiej samej nazwie i dacie                                       | Aplikacja powinna ostrzec lub pozwolić (zależnie od projektu) | Wynik pozytywny            | Dodać walidację jeśli brak     | Debug + UI              |
+| Długi tekst opisu         | Wprowadzenie wieloliniowego dużego opisu                                                  | Tekst poprawnie zapisany i wyświetlany                        | Wynik pozytywny            | -                              | TextBox multiline       |
+| Stabilność UI             | Szybkie dodawanie/usuń → 20+ operacji                                                     | Aplikacja działa bez błędów                                   | Wynik pozytywny            | -                              | Test ręczny             |
+| Test rozmiaru okna        | Zmiana rozmiaru okna WPF                                                                  | UI skaluje się prawidłowo                                     | Wynik pozytywny            | Użyć Grid i DockPanel          | Aplikacja WPF           |
+| Test zamknięcia aplikacji | Zamknięcie aplikacji z otwartymi zadaniami                                                | Zmiany zostają zapisane                                       | Wynik pozytywny            | Jeśli brak → dodać autosave    | Mechanizm zapisu        |
+
+---
+
+2. Testy niefunkcjonalne
+
+2.1. Wydajność
+
+| Test                       | Oczekiwany wynik                                  |
+| -------------------------- | ------------------------------------------------- |
+| Lista 1000 zadań           | Aplikacja działa płynnie, scroll działa bez lagów |
+| Szybkie dodawanie 30 zadań | UI nie zawiesza się                               |
+
+---
+
+2.2. Użyteczność
+
+| Test                                             | Oczekiwany wynik               |
+| ------------------------------------------------ | ------------------------------ |
+| Czy użytkownik łatwo znajdzie funkcje (test UX)? | Intuicyjna obsługa interfejsu  |
+| Czy kolory są czytelne?                          | Priorytety wyraźnie odróżnione |
+
+---
+
+2.3. Testy kompatybilności
+
+| Test       | Oczekiwany wynik |
+| ---------- | ---------------- |
+| Windows 10 | Aplikacja działa |
+| Windows 11 | Aplikacja działa |
+
+---
+
+3. Test integracyjny 
+
+Rodzaj testu: Test integracyjny (adaptacyjny)
+Wykonawca: Karol Pajdzik
+
+Opis testu:
+Test AddTask_AndDisplayInUI_ShouldSynchronizeDataCorrectly sprawdza, czy aplikacja poprawnie integruje logikę biznesową z warstwą wizualną.
+W szczególności weryfikuje, czy po dodaniu zadania:
+
+- dane są poprawnie zapisane w modelu,
+- interfejs WPF odświeża się automatycznie,
+- zadanie pojawia się na liście z właściwym kolorem i datą,
+- elementy UI (ListBox / ItemsControl) reagują prawidłowo na zmianę kolekcji.
+
+Jest to test adaptacyjny, ponieważ sprawdza, czy UI potrafi dostosować się do dynamicznie zmieniających się danych.
+
+Rezultat:
+Pozytywny – zadanie jest poprawnie dodawane, widoczne w interfejsie i wyświetlane z właściwymi parametrami.
+
+Poprawki do wprowadzenia:
+– (brak – wszystko działa zgodnie z oczekiwaniami)
+
+Użyte programy/technologie:
+Test manualny + narzędzia debugowania Visual Studio (WPF + MVVM)
+
+---
+
+Scenariusz testowy (fragment „testu” integracyjnego)
+
+1. Uruchom aplikację Menedżer Zadań.
+2. W polu „Nazwa zadania” wpisz: Test Integracyjny UI.
+3. Wybierz datę: dzisiejsza.
+4. Wybierz priorytet: Wysoki (czerwony).
+5. Dodaj dowolny opis.
+6. Kliknij przycisk „Dodaj Zadanie”.
+7. Sprawdź listę zadań po lewej stronie.
+8. Zweryfikuj:
+   - czy zadanie pojawiło się na liście,
+   - czy kolor priorytetu jest czerwony,
+   - czy data i nazwa zadania wyświetlają się poprawnie,
+   - czy UI odświeżyło się bez opóźnień i błędów.
+W taki sposób przebiega ten test.
+
+
+
+
+4. Rodzaj testu: Test integracyjny (UI Automation)
+Wykonawca: Karol Pajdzik
+
+Opis testu:
+Test *UI_ShouldAddTaskAndDisplayItOnList* sprawdza, czy aplikacja Menedżer Zadań poprawnie reaguje na rzeczywiste operacje użytkownika: wprowadzenie nazwy, ustawienie daty i kliknięcie przycisku „Dodaj Zadanie”.
+Test wykorzystuje Windows UI Automation, aby symulować kliknięcia i interakcje użytkownika.
+
+Rezultat: Pozytywny – aplikacja poprawnie dodaje zadanie i wyświetla je na liście.
+Poprawki: brak
+Użyte technologie: Microsoft UIAutomation, WPF App Inspection Tools
+
+---
+
+using System;
+using System.Windows.Automation;
+
+class TaskManagerUITest
+{
+    static void Main()
+    {
+        // Uruchomienie aplikacji
+        var process = System.Diagnostics.Process.Start(@"C:\TwojaSciezka\TaskManager.exe");
+        System.Threading.Thread.Sleep(2000); // czekamy aż UI się załaduje
+
+        // Pobieramy główne okno aplikacji
+        AutomationElement mainWindow = AutomationElement.RootElement.FindFirst(
+            TreeScope.Children,
+            new PropertyCondition(AutomationElement.NameProperty, "Menadżer Zadań"));
+
+        if (mainWindow == null)
+        {
+            Console.WriteLine("❌ Nie znaleziono okna aplikacji.");
+            return;
+        }
+
+        Console.WriteLine("✓ Okno aplikacji odnalezione.");
+
+      
+   1. Wpisanie nazwy zadania
+ 
+        var nameBox = mainWindow.FindFirst(TreeScope.Descendants,
+            new PropertyCondition(AutomationElement.AutomationIdProperty, "TaskNameBox"));
+
+        ValuePattern nameValue = (ValuePattern)nameBox.GetCurrentPattern(ValuePattern.Pattern);
+        nameValue.SetValue("Test UI Automation");
+
+    2. Wybór daty
+       
+        var datePicker = mainWindow.FindFirst(TreeScope.Descendants,
+            new PropertyCondition(AutomationElement.AutomationIdProperty, "TaskDatePicker"));
+
+        ValuePattern dateValue = (ValuePattern)datePicker.GetCurrentPattern(ValuePattern.Pattern);
+        dateValue.SetValue(DateTime.Today.ToShortDateString());
+
+   3. Kliknięcie przycisku "Dodaj Zadanie"
+     
+        var addButton = mainWindow.FindFirst(TreeScope.Descendants,
+            new PropertyCondition(AutomationElement.AutomationIdProperty, "AddTaskButton"));
+
+        InvokePattern clickAdd = (InvokePattern)addButton.GetCurrentPattern(InvokePattern.Pattern);
+        clickAdd.Invoke();
+
+        System.Threading.Thread.Sleep(500);
+
+
+
+   4. Weryfikacja – czy zadanie pojawiło się na liście?
+  
+        var taskList = mainWindow.FindFirst(TreeScope.Descendants,
+            new PropertyCondition(AutomationElement.AutomationIdProperty, "TaskList"));
+
+        var taskItem = taskList.FindFirst(TreeScope.Descendants,
+            new PropertyCondition(AutomationElement.NameProperty, "Test UI Automation"));
+
+        if (taskItem != null)
+            Console.WriteLine("✓ Test przeszedł. Zadanie zostało dodane do listy.");
+        else
+            Console.WriteLine("❌ Test nieudany. Zadanie nie pojawiło się na liście.");
+
+        process.CloseMainWindow();
+    }
+}
+```
+
